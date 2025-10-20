@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organisasi Budaya: Minimalis & Nyaman</title>
+    <style>
+        /* --- Bagian CSS untuk Tampilan Minimalis dan Nyaman --- */
+        
+        /* Reset dan Tipografi Dasar */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Latar belakang abu-abu muda yang lembut */
+            color: #333; /* Warna teks gelap */
+            line-height: 1.6;
+        }
+
+        /* Header dan Navigasi */
+        header {
+            background-color: #231f77; /* Warna Header (biru gelap) */
+            color: white;
+            padding: 15px 5%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 8px 15px; /* Padding ditingkatkan */
+            border-radius: 20px; /* Bentuk membulat (bubble look) */
+            transition: all 0.3s ease; /* Transisi untuk animasi bubble */
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Garis luar samar */
+        }
+
+        /* Efek "Bubble" saat di-hover dan Active */
+        .nav-links a:hover, .nav-links a.active {
+            background-color: #00796b; /* Warna latar belakang kontras */
+            transform: scale(1.05); /* Sedikit membesar */
+            box-shadow: 0 0 10px rgba(0, 121, 107, 0.8); /* Bayangan cahaya */
+            border-color: white;
+        }
+
+        /* Struktur Konten Utama */
+        main {
+            padding: 20px 5%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        section {
+            padding: 40px;
+            margin-bottom: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            scroll-margin-top: 80px; 
+        }
+
+        section h2 {
+            color: #231f77; 
+            border-bottom: 2px solid #e0f2f1;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* --- Gaya Galeri Budaya di Beranda --- */
+        .culture-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        /* Gaya baru untuk tautan kartu */
+        .culture-card-link {
+            text-decoration: none; /* Hilangkan garis bawah default */
+            color: inherit;
+        }
+
+        .culture-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer; /* Indikasi bahwa ini dapat diklik */
+        }
+
+        .culture-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Gaya untuk Tag Gambar (IMG) */
+        .culture-card img {
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+            border-bottom: 1px solid #ccc;
+        }
+
+        .culture-info {
+            padding: 15px;
+        }
+
+        .culture-info h3 {
+            color: #231f77;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+        }
+
+        .culture-info p {
+            font-size: 0.9em;
+            color: #555;
+        }
+        
+        /* --- Gaya untuk Halaman Detail Baru --- */
+        #detail-view {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        #detail-view h2 {
+            font-size: 2.5em;
+            margin-top: 10px;
+        }
+
+        #detail-view #back-button {
+            background: none;
+            border: 1px solid #00796b;
+            color: #00796b;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.2s;
+            font-weight: bold;
+        }
+
+        #detail-view #back-button:hover {
+            background-color: #00796b;
+            color: white;
+        }
+        
+        .detail-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-facts {
+            background-color: #f0f8ff; /* Warna latar belakang lembut */
+            padding: 20px;
+            border-left: 5px solid #231f77;
+            border-radius: 5px;
+            margin-top: 25px;
+        }
+
+
+        /* Gaya Khusus untuk Kalkulator (Dibuat lebih rapi) */
+        /* Gaya umum untuk input group */
+        #kalkulator .input-group, #kalkulator-terbilang .input-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        #kalkulator input[type="text"],
+        #kalkulator input[type="number"],
+        #kalkulator-terbilang input[type="number"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            flex-grow: 1;
+        }
+        
+        /* Gaya umum untuk tombol utama */
+        #kalkulator button, #kalkulator-terbilang button {
+            background-color: #231f77;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #kalkulator button:hover, #kalkulator-terbilang button:hover {
+            background-color: #1a1758;
+        }
+        
+        /* Gaya unik untuk hasil Terbilang */
+        #hasilTerbilang {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff3e0; /* Warna kuning muda lembut */
+            border-radius: 5px;
+            font-size: 1.1em;
+            color: #ff9800; /* Warna oranye untuk aksen */
+            border: 1px solid #ffcc80;
+        }
+
+        /* Gaya untuk Kalkulator Pengeluaran */
+        #listPengeluaran {
+            list-style: none;
+            padding: 0;
+        }
+
+        #listPengeluaran li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Untuk perataan vertikal */
+            padding: 10px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        #totalPengeluaran {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e0f2f1;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1a1758;
+        }
+
+        /* Gaya untuk Kalkulator Hitung Angka */
+        #calculator-basic {
+            max-width: 400px;
+        }
+
+        #display {
+            width: 100%;
+            padding: 10px;
+            font-size: 2em;
+            text-align: right;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            background-color: #fafafa;
+        }
+
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .calculator-buttons button {
+            padding: 15px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            background-color: #e0e0e0; /* Tombol angka */
+            color: #333;
+        }
+
+        .calculator-buttons button:hover {
+            background-color: #ccc;
+        }
+
+        .operator {
+            background-color: #ffcc80 !important; /* Tombol operator (orange) */
+            color: #1a1758 !important;
+        }
+
+        .operator:hover {
+             background-color: #ffb74d !important;
+        }
+
+        .equals {
+            background-color: #00796b !important; /* Tombol samadengan (teal) */
+            color: white !important;
+            grid-column: span 2; /* Mencakup dua kolom */
+        }
+
+        .equals:hover {
+            background-color: #004d40 !important;
+        }
+
+        .clear {
+            background-color: #e57373 !important; /* Tombol clear (merah muda) */
+            color: white !important;
+        }
+        
+        .clear:hover {
+            background-color: #d32f2f !important;
+        }
+
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 5%;
+            background-color: #333;
+            color: #ddd;
+            font-size: 0.9em;
+            margin-top: 30px;
+        }
+
+        /* Gaya Responsif Sederhana */
+        @media (max-width: 768px) {
+            .nav-links a {
+                margin-left: 10px;
+            }
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            #kalkulator .input-group, #kalkulator-terbilang .input-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <h1>Budaya Nusantara</h1>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Beranda</a>
+                <a href="#profile" class="nav-link">Profil</a>
+                <a href="#contact" class="nav-link">Kontak</a>
+                <a href="#kalkulator" class="nav-link">Kalkulator Acara</a>
+                <a href="#calculator-basic" class="nav-link">Hitung</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section id="detail-view" style="display: none;">
+            <button id="back-button" onclick="showHome()">← Kembali ke Beranda</button>
+            <div id="detail-content">
+                </div>
+        </section>
+
+        <div id="home-view"> 
+            <section id="home">
+                <h2>Jelajahi Kekayaan Budaya Nusantara</h2>
+                <p>Klik gambar untuk melihat details.</p>
+
+                <div class="culture-gallery">
+                    
+                    <a href="#" class="culture-card-link" data-id="batik">
+                        <div class="culture-card">
+                            <img src="batik.jpg" alt="Kain Batik dari Jawa"> 
+                            <div class="culture-info">
+                                <h3>Batik (Jawa)</h3>
+                                <p>Kain bergambar yang dibuat secara tradisional dengan menuliskan malam pada kain. Batik telah diakui oleh UNESCO. [Klik untuk Detail]</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="culture-card-link" data-id="tari">
+                        <div class="culture-card">
+                            <img src="tari.jpg" alt="Penari Saman dari Aceh"> 
+                            <div class="culture-info">
+                                <h3>Tari Saman (Aceh)</h3>
+                                <p>Tarian suku Gayo yang dipertunjukkan dengan posisi duduk berbaris dan gerakan tepukan tangan dan dada yang seragam dan cepat. [Klik untuk Detail]</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="culture-card-link" data-id="candi">
+                        <div class="culture-card">
+                            <img src="candi.jpg" alt="Candi Borobudur"> 
+                            <div class="culture-info">
+                                <h3>Candi Borobudur (Jawa Tengah)</h3>
+                                <p>Candi Buddha terbesar di dunia yang merupakan warisan sejarah dan arsitektur kuno. Keindahan reliefnya penuh makna. [Klik untuk Detail]</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="culture-card-link" data-id="wayang">
+                        <div class="culture-card">
+                            <img src="wayang.jpg" alt="Boneka Wayang Kulit">
+                            <div class="culture-info">
+                                <h3>Wayang Kulit</h3>
+                                <p>Seni pertunjukan bayangan yang menggunakan boneka kulit. Media penyebaran moral, etika, dan nilai-nilai luhur budaya Jawa. [Klik untuk Detail]</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section id="profile">
+                <h2>Profil Komunitas</h2>
+                <p><strong>Visi Kami:</strong> Menjadi komunitas penggerak utama dalam pelestarian dan penyebaran nilai-nilai luhur budaya Indonesia di tingkat nasional maupun internasional.</p>
+                <p><strong>Misi Kami:</strong></p>
+                <ul>
+                    <li>Mengadakan lokakarya dan pelatihan rutin tentang seni dan tradisi lokal.</li>
+                    <li>Mendokumentasikan berbagai bentuk warisan budaya yang terancam punah.</li>
+                    <li>Membangun jejaring dengan komunitas budaya lain dan institusi pendidikan.</li>
+                    <li>Mengintegrasikan teknologi untuk mengenalkan budaya kepada generasi muda.</li>
+                </ul>
+                <p>Kami percaya bahwa budaya adalah akar dari identitas bangsa. Bersama, kita tumbuh dan melestarikan.</p>
+            </section>
+
+            <section id="contact">
+                <h2>Hubungi Kami</h2>
+                <p>Apakah Anda memiliki pertanyaan, ingin berkolaborasi, atau tertarik bergabung? Jangan ragu untuk menghubungi kami melalui informasi di bawah ini atau mengisi formulir sederhana:</p>
+                
+                <div style="max-width: 400px;">
+                    <p><strong>Alamat Sekretariat:</strong> Jl. Pelestari Budaya No. 17, Jakarta</p>
+                    <p><strong>Email:</strong> info@budayanusantara.org</p>
+                    <p><strong>Telepon:</strong> (021) 1234 5678</p>
+                    
+                    <form action="#" method="POST" style="margin-top: 25px;">
+                        <h3>Kirim Pesan Cepat</h3>
+                        <input type="text" placeholder="Nama Anda" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                        <input type="email" placeholder="Email Anda" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                        <textarea placeholder="Pesan Anda..." rows="4" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+                        <button type="submit">Kirim Pesan</button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="kalkulator">
+                <h2>Kalkulator Pengeluaran Acara</h2>
+                <p>Gunakan alat ini untuk melacak dan memperkirakan total biaya yang dibutuhkan untuk menyelenggarakan acara budaya Anda.</p>
+                
+                <div class="input-group">
+                    <input type="text" id="namaPengeluaran" placeholder="Nama Pos Pengeluaran (Contoh: Sewa Venue)" required>
+                    <input type="number" id="jumlahPengeluaran" placeholder="Jumlah (Rupiah)" min="1000" required>
+                    <button onclick="tambahPengeluaran()">Tambah</button>
+                </div>
+
+                <h3>Rincian Pengeluaran</h3>
+                <ul id="listPengeluaran">
+                    </ul>
+
+                <div id="totalPengeluaran">
+                    Total Biaya: Rp 0
+                </div>
+            </section>
+
+            <section id="calculator-basic">
+                <h2>kalkulator</h2>
+
+                <div id="calculator-app">
+                    <input type="text" id="display" disabled value="0">
+                    <div class="calculator-buttons">
+                        <button class="clear" onclick="clearDisplay()">AC</button>
+                        <button class="operator" onclick="appendNumber('/')">÷</button>
+                        <button class="operator" onclick="appendNumber('*')">×</button>
+                        
+                        <button onclick="appendNumber(7)">7</button>
+                        <button onclick="appendNumber(8)">8</button>
+                        <button onclick="appendNumber(9)">9</button>
+                        <button class="operator" onclick="appendNumber('-')">−</button>
+
+                        <button onclick="appendNumber(4)">4</button>
+                        <button onclick="appendNumber(5)">5</button>
+                        <button onclick="appendNumber(6)">6</button>
+                        <button class="operator" onclick="appendNumber('+')">+</button>
+
+                        <button onclick="appendNumber(1)">1</button>
+                        <button onclick="appendNumber(2)">2</button>
+                        <button onclick="appendNumber(3)">3</button>
+                        <button onclick="appendNumber('.')">.</button>
+
+                        <button onclick="appendNumber(0)">0</button>
+                        <button class="equals" onclick="calculate()">=</button>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+        
+    </main>
+
+    <footer>
+        &copy; 2025 Budaya Nusantara. Didesain Minimalis & Penuh Makna.
+    </footer>
+
+    <script>
+        // ===================================
+        // 1. FUNGSI SCROLL HALUS (SMOOTH SCROLL)
+        // ===================================
+        document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (document.getElementById('home-view').style.display !== 'none') {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth' 
+                        });
+                    }
+                }
+            });
+        });
+
+        // ===================================
+        // 2. DATA DETAIL BUDAYA
+        // ===================================
+        const culturalDetails = {
+            batik: {
+                title: "Batik (Jawa)",
+                origin: "Pulau Jawa, Indonesia",
+                description: "Batik adalah seni melukis kain menggunakan lilin (malam). Prosesnya yang rumit mencakup tahap pencantingan, pewarnaan, dan pelorodan. Batik diakui **UNESCO** sebagai Warisan Budaya Takbenda Manusia pada tahun 2009. Setiap motifnya memiliki makna filosofis yang mendalam, seperti motif Parang yang melambangkan ombak dan perjuangan. ",
+                image: "batik.jpg",
+                more_info: ["Diakui UNESCO pada 2 Oktober 2009.", "Terdapat ribuan motif, masing-masing dengan makna filosofis.", "Teknik yang digunakan: Batik Tulis, Batik Cap, dan Batik Kombinasi."]
+            },
+            tari: {
+                title: "Tari Saman (Aceh)",
+                origin: "Suku Gayo, Aceh",
+                description: "Tari Saman adalah tarian yang sangat cepat dan ritmis, menuntut **kekompakan tinggi** dari para penari yang duduk berlutut dalam barisan. Tarian ini sering dilakukan untuk merayakan peristiwa penting dalam adat atau sebagai media dakwah. Kecepatan dan perubahan pola tepukan melambangkan kebersamaan, persatuan, dan ketangkasan komunitas. Tarian ini dikenal juga sebagai 'Tari Seribu Tangan'.",
+                image: "tari.jpg",
+                more_info: ["Ditetapkan sebagai Warisan Budaya Takbenda oleh UNESCO sejak 2011.", "Penari tidak diiringi musik, melainkan nyanyian dan tepukan tangan/dada penari.", "Dilakukan oleh penari laki-laki dengan jumlah ganjil."]
+            },
+            candi: {
+                title: "Candi Borobudur (Jawa Tengah)",
+                origin: "Magelang, Jawa Tengah",
+                description: "Merupakan candi Buddha terbesar di dunia, dibangun pada abad ke-8 dan ke-9 oleh wangsa Syailendra. Borobudur memiliki **9 platform bertumpuk** yang merepresentasikan tingkatan alam semesta (Kamadhatu, Rupadhatu, Arupadhatu) dalam kosmologi Buddha menuju nirwana.",
+                image: "candi.jpg",
+                more_info: ["Candi Buddha terbesar di dunia.", "Memiliki 2.672 panel relief yang menceritakan kisah-kisah Buddha.", "Menjadi salah satu Keajaiban Dunia."]
+            },
+            wayang: {
+                title: "Wayang Kulit",
+                origin: "Pulau Jawa dan Bali",
+                description: "Wayang Kulit adalah seni pertunjukan tradisional Indonesia yang menggunakan bayangan boneka yang terbuat dari kulit kerbau. Pertunjukan ini dipimpin oleh seorang **Dalang**, yang menjadi narator, pengisi suara, dan pemain musik Gamelan. Cerita yang sering dibawakan berasal dari epos Hindu seperti Ramayana dan Mahabharata, namun disisipi nilai-nilai moral dan luhur budaya Jawa. Wayang diakui UNESCO pada 2003.",
+                image: "wayang.jpg",
+                more_info: ["Diakui UNESCO pada 7 November 2003.", "Boneka dibuat dari kulit kerbau yang diukir halus.", "Musik pengiring utamanya adalah Gamelan."]
+            }
+        };
+
+        // ===================================
+        // 3. FUNGSI NAVIGASI DETAIL
+        // ===================================
+        const homeView = document.getElementById('home-view');
+        const detailView = document.getElementById('detail-view');
+        const detailContent = document.getElementById('detail-content');
+
+        function showHome() {
+            homeView.style.display = 'block';
+            detailView.style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
+        }
+
+        function showDetail(id) {
+            const data = culturalDetails[id];
+            if (!data) return; 
+
+            homeView.style.display = 'none';
+            detailView.style.display = 'block';
+
+            let factsHtml = data.more_info.map(fact => `<li>${fact}</li>`).join('');
+
+            detailContent.innerHTML = `
+                <h2>${data.title}</h2>
+                <img src="${data.image}" alt="${data.title}" class="detail-image">
+                <p><strong>Asal:</strong> ${data.origin}</p>
+                <p>${data.description}</p>
+                
+                <div class="detail-facts">
+                    <h4>Fakta Menarik & Pengakuan</h4>
+                    <ul>
+                        ${factsHtml}
+                    </ul>
+                </div>
+            `;
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.querySelectorAll('.culture-card-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); 
+                const objectId = this.getAttribute('data-id');
+                showDetail(objectId);
+            });
+        });
+
+
+        // ===================================
+        // 4. KALKULATOR PENGELUARAN
+        // ===================================
+        let total = 0;
+        const listPengeluaran = document.getElementById('listPengeluaran');
+        const totalPengeluaranElem = document.getElementById('totalPengeluaran');
+
+        function formatRupiah(angka) {
+            return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        function hitungTotal() {
+            total = 0;
+            listPengeluaran.querySelectorAll('li').forEach(item => {
+                const amountText = item.querySelector('span:nth-child(2)').textContent.replace('Rp ', '').replace(/\./g, '');
+                total += parseInt(amountText);
+            });
+            
+            totalPengeluaranElem.textContent = `Total Biaya: ${formatRupiah(total)}`;
+        }
+
+        function hapusPengeluaran(liElement) {
+            liElement.remove();
+            hitungTotal();
+        }
+
+        function tambahPengeluaran() {
+            const namaInput = document.getElementById('namaPengeluaran');
+            const jumlahInput = document.getElementById('jumlahPengeluaran');
+
+            const nama = namaInput.value.trim();
+            const jumlah = parseInt(jumlahInput.value);
+
+            if (nama === "" || isNaN(jumlah) || jumlah <= 0) {
+                alert("Mohon masukkan nama pengeluaran dan jumlah yang valid.");
+                return;
+            }
+
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <span>${nama}</span>
+                <span>${formatRupiah(jumlah)}</span>
+                <button style="background-color: #e57373; margin-left: 10px; border: none; padding: 5px 10px; border-radius: 4px; color: white;" onclick="hapusPengeluaran(this.parentNode)">Hapus</button>
+            `;
+            
+            listPengeluaran.appendChild(li);
+
+            namaInput.value = '';
+            jumlahInput.value = '';
+            hitungTotal();
+        }
+        
+        // Memuat contoh awal
+        const contohPengeluaran = [
+            { nama: "Biaya Transportasi Tim", jumlah: 500000 },
+            { nama: "Catering Konsumsi", jumlah: 1500000 }
+        ];
+
+        contohPengeluaran.forEach(item => {
+             const li = document.createElement('li');
+             li.innerHTML = `
+                 <span>${item.nama}</span>
+                 <span>${formatRupiah(item.jumlah)}</span>
+                 <button style="background-color: #e57373; margin-left: 10px; border: none; padding: 5px 10px; border-radius: 4px; color: white;" onclick="hapusPengeluaran(this.parentNode)">Hapus</button>
+             `;
+             listPengeluaran.appendChild(li);
+        });
+        hitungTotal(); 
+
+
+        // ===================================
+        // 6. KALKULATOR HITUNG ANGKA DASAR BARU
+        // ===================================
+        const display = document.getElementById('display');
+        let currentInput = '0';
+        let previousValue = null;
+        let operator = null;
+
+        function updateDisplay() {
+            display.value = currentInput;
+        }
+
+        function clearDisplay() {
+            currentInput = '0';
+            previousValue = null;
+            operator = null;
+            updateDisplay();
+        }
+
+        function appendNumber(value) {
+            if (currentInput === '0' && value !== '.') {
+                currentInput = String(value);
+            } else if (value === '.' && currentInput.includes('.')) {
+                // Mencegah dua titik desimal
+                return; 
+            } else {
+                currentInput += String(value);
+            }
+            updateDisplay();
+        }
+
+        function setOperator(op) {
+            if (previousValue !== null) {
+                // Jika operator berganti, hitung dulu yang sebelumnya
+                calculate(); 
+            }
+            previousValue = parseFloat(currentInput);
+            operator = op;
+            // Reset input untuk angka berikutnya
+            currentInput = '0'; 
+        }
+
+        function calculate() {
+            let currentValue = parseFloat(currentInput);
+            let result;
+
+            if (previousValue === null || operator === null) {
+                return;
+            }
+
+            switch (operator) {
+                case '+':
+                    result = previousValue + currentValue;
+                    break;
+                case '-':
+                    result = previousValue - currentValue;
+                    break;
+                case '*':
+                    result = previousValue * currentValue;
+                    break;
+                case '/':
+                    if (currentValue === 0) {
+                        alert("Tidak bisa membagi dengan nol!");
+                        clearDisplay();
+                        return;
+                    }
+                    result = previousValue / currentValue;
+                    break;
+                default:
+                    return;
+            }
+
+            // Atur ulang state
+            currentInput = String(result);
+            operator = null;
+            previousValue = null;
+            updateDisplay();
+        }
+
+        // Panggil appendNumber untuk tombol angka/operator
+        document.querySelectorAll('.calculator-buttons button').forEach(button => {
+            if (!button.classList.contains('clear') && !button.classList.contains('equals') && !button.classList.contains('operator')) {
+                button.addEventListener('click', () => {
+                    appendNumber(button.textContent.trim());
+                });
+            } else if (button.classList.contains('operator')) {
+                 button.addEventListener('click', () => {
+                    setOperator(button.textContent.trim().replace('÷', '/').replace('×', '*').replace('−', '-'));
+                 });
+            }
+        });
+
+        clearDisplay(); // Inisialisasi tampilan
+    </script>
+</body>
+</html>
